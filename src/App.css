@@ -35,3 +35,32 @@
     font-size: .75rem;
     font-weight: 500;
 }
+
+/* from section  */
+
+.main{
+    padding: 36px;
+}
+
+.form{
+    display: grid;
+    grid-template: 40px 40px / 1fr 1fr;
+    gap: 17px;
+}
+
+.form-input{
+    font-family: "Karla", sans-serif;
+    border-radius: 5px;
+    border: 1px solid #D1D5DB;
+}
+
+.form-submit-button{
+    grid-column: 1 / -1;
+    font-family: "Karla", sans-serif;
+    border-radius: 5px;
+    border: none;
+    background-image: linear-gradient(90deg, rgba(103,34,128,1) 0%, rgba(139,36,175,1) 48%, rgba(166,38,211,1) 100%);
+    color: white;
+    cursor: pointer;
+
+}
