@@ -1,0 +1,37 @@
+.nav-bar{
+    color: white;
+    box-shadow: 0 10px 20px #73737347;
+    background-image: linear-gradient(90deg, rgba(103,34,128,1) 0%, rgba(139,36,175,1) 48%, rgba(166,38,211,1) 100%);
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+}
+
+.nav-title{
+    display: flex;
+    align-items: center;
+}
+
+.nav-title > h1 {
+    font-size: 1.25rem;
+    margin-left: 10px;
+}
+
+.nav-title > img {
+    height: 27px;
+    width: 32px;
+}
+
+.nav-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-text-item{
+    font-size: .75rem;
+    font-weight: 500;
+}
