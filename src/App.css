@@ -38,10 +38,14 @@
 
 /* form section*/
 
+.main{
+    margin: 40px;
+}
+
 .form{
     display: flex;
     flex-wrap: wrap;
-    margin: 40px;
+    margin-bottom: 40px;
     gap: 1vh;
 }
 
@@ -96,4 +100,20 @@
 
 .form-submit-button:active{
     transform: scale(0.97);
+}
+
+/* meme image */
+
+.meme-img-section{
+    display: flex;
+    justify-content: center;
+}
+
+.meme-img{
+    max-width: 100%;
+    max-height: 65vh;
+}
+
+.meme-img:hover{
+    transform: scale(1.10);
 }
