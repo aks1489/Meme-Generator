@@ -1,12 +1,14 @@
+import { useState } from "react";
 import memedata from "./memedata"
 
 export default function Meme(){
-    function getMemeImage(){
+    const [memeUrl,setMemeUrl] = useState("")
+    function getMemeUrl(){
         if(memedata.success === true){
             const memesArray = memedata.data.memes;
             const randomNumber = Math.floor(Math.random() * memesArray.length)
-            const url = memesArray[randomNumber].url
-            return console.log(url)
+            setMemeUrl(memesArray[randomNumber].url);
+            return console.log(memeUrl)
         }else{
             console.log("not connected with database")
         }
@@ -25,8 +27,9 @@ export default function Meme(){
                         <input className="form-input"  id="bottom-text" name="bottom-text" type="text" placeholder="And take my money" />
                     </div>
                 </div>
-                <button type="submit" onClick={getMemeImage}  className="form-submit-button">Get a new meme image 🖼️</button>
+                <button type="submit" onClick={getMemeUrl}  className="form-submit-button">Get a new meme image 🖼️</button>
             </div>
+            <img src={memeUrl} alt="" className="memeImg" />
         </div>
     )
 }
