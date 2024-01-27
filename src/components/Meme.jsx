@@ -2,12 +2,21 @@ import { useState } from "react";
 import memedata from "./memedata"
 
 export default function Meme(){
-    const [memeUrl,setMemeUrl] = useState("")
+    const [meme,setMeme] = useState({
+        topText: "",
+        bottomText: "",
+        randomImg: "http://i.imgflip.com/1bij.jpg"
+    })
+    const [memeUrl,setMemeUrl] = useState(memedata)
     function getMemeUrl(){
-        if(memedata.success === true){
-            const memesArray = memedata.data.memes;
+        if(memeUrl.success === true){
+            const memesArray = memeUrl.data.memes;
             const randomNumber = Math.floor(Math.random() * memesArray.length)
-            setMemeUrl(memesArray[randomNumber].url);
+            const url = memesArray[randomNumber].url;
+            setMeme(prvdata => ({
+                ...prvdata,
+                randomImg: url
+            }))
             return console.log(memeUrl)
         }else{
             console.log("not connected with database")
@@ -30,7 +39,7 @@ export default function Meme(){
                 <button type="submit" onClick={getMemeUrl}  className="form-submit-button">Get a new meme image 🖼️</button>
             </div>
             <div className="meme-img-section">
-                <img src={memeUrl} alt="" className="meme-img" />
+                <img src={meme.randomImg} alt="" className="meme-img" />
             </div>
         </div>
     )
