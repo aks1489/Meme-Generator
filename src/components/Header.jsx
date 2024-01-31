@@ -7,7 +7,7 @@ export default function Header(){
                     <h1>Meme Generator</h1>
                 </div>
                 <div className="nav-text">
-                    <p className="nav-text-item">React Course - Project 3</p>
+                    <p className="nav-text-item">React Project</p>
                 </div>
             </nav>
         </header>
