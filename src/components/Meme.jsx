@@ -1,5 +1,7 @@
 import { useState } from "react";
+import * as htmlToImage from "html-to-image"
 import memedata from "./memedata"
+import download from "downloadjs";
 
 export default function Meme(){
     const [meme,setMeme] = useState({
@@ -18,7 +20,6 @@ export default function Meme(){
                 ...prvdata,
                 randomImg: url
             }))
-            return console.log(memeUrl)
         }else{
             console.log("not connected with database")
         }
@@ -30,6 +31,14 @@ export default function Meme(){
             ...prvData,
             [name] : value
         }))
+    }
+
+    function handleDownload() {
+        const downloadMeme = document.getElementById("memeImgSection");
+    
+         htmlToImage.toJpeg(downloadMeme).then(dataUrl =>{
+            download(dataUrl, "meme_image.jpeg")
+        }).catch(() => console.log("error in downloading"))   
     }
     return(
         <div className="main">
@@ -46,10 +55,13 @@ export default function Meme(){
                 </div>
                 <button type="submit" onClick={getMemeUrl}  className="form-submit-button">Get a new meme image 🖼️</button>
             </div>
-            <div className="meme-img-section">
+            <div className="meme-img-section" id="memeImgSection">
                 <img src={meme.randomImg} alt="" className="meme-img" />
                 <h2 className="imgText top">{meme.topText}</h2>
                 <h2 className="imgText bottome">{meme.bottomText}</h2>
+            </div>
+            <div className="download-section">
+                <button className="download-button" onClick={handleDownload}>Download Meme 📲</button>
             </div>
         </div>
     )
