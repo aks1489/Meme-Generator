@@ -45,7 +45,7 @@
 .form{
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 4vh;
     gap: 1vh;
 }
 
@@ -108,6 +108,12 @@
     position:relative;
     display: flex;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.meme-img-section:focus-visible{
+    outline: none;
 }
 
 .meme-img{
@@ -150,4 +156,29 @@
 
 .bottome{
     bottom: 0;
+}
+
+/*  */
+
+.download-section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 4vh;
+}
+
+.img-container{
+    width: 100%;
+    margin-top: 4vh;
+}
+
+.download-button{
+    height: 4vh;
+    font-family: "Karla", sans-serif;
+    font-size: 1em;
+    border-radius: 1vh;
+    border: none;
+    background-image: linear-gradient(90deg, rgba(103,34,128,1) 0%, rgba(139,36,175,1) 48%, rgba(166,38,211,1) 100%);
+    color: white;
+    cursor: pointer;
 }
