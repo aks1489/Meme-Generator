@@ -7,6 +7,7 @@ export default function Meme(){
         bottomText: "",
         randomImg: "http://i.imgflip.com/1bij.jpg"
     })
+    // eslint-disable-next-line no-unused-vars
     const [memeUrl,setMemeUrl] = useState(memedata)
     function getMemeUrl(){
         if(memeUrl.success === true){
@@ -40,6 +41,8 @@ export default function Meme(){
             </div>
             <div className="meme-img-section">
                 <img src={meme.randomImg} alt="" className="meme-img" />
+                <h2 className="imgText top">Top Text</h2>
+                <h2 className="imgText bottome">Bottome Text</h2>
             </div>
         </div>
     )
