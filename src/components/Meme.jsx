@@ -7,7 +7,7 @@ export default function Meme(){
     const [meme,setMeme] = useState({
         topText: "",
         bottomText: "",
-        randomImg: "http://i.imgflip.com/1bij.jpg"
+        randomImg: "https://i.imgflip.com/1bij.jpg"
     })
     // eslint-disable-next-line no-unused-vars
     const [memeUrl] = useState(memedata)
