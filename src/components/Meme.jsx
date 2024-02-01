@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as htmlToImage from "html-to-image"
-import memedata from "./memedata"
+import memedata from "../assets/memedata"
 import download from "downloadjs";
 
 export default function Meme(){
