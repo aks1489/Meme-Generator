@@ -1,6 +1,5 @@
 import { useState } from "react";
 import * as htmlToImage from "html-to-image"
-import memedata from "../assets/memedata"
 import download from "downloadjs";
 
 export default function Meme(){
@@ -9,20 +8,22 @@ export default function Meme(){
         bottomText: "",
         randomImg: "https://i.imgflip.com/1bij.jpg"
     })
-    // eslint-disable-next-line no-unused-vars
-    const [memeUrl] = useState(memedata)
+    
+    const [memeUrl, setMemeUrl] = useState([])
+
+    useState(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => setMemeUrl(data.data.memes))
+    }, [])
+
     function getMemeUrl(){
-        if(memeUrl.success === true){
-            const memesArray = memeUrl.data.memes;
-            const randomNumber = Math.floor(Math.random() * memesArray.length)
-            const url = memesArray[randomNumber].url;
+            const randomNumber = Math.floor(Math.random() * memeUrl.length)
+            const url = memeUrl[randomNumber].url;
             setMeme(prvdata => ({
                 ...prvdata,
                 randomImg: url
             }))
-        }else{
-            console.log("not connected with database")
-        }
     }
 
     function handleChange(event){
@@ -40,7 +41,8 @@ export default function Meme(){
             download(dataUrl, "meme_image.png")
         }).catch(() => console.log("error in downloading"))   
     }
-    return(
+
+    return (
         <div className="main">
             <div className="form" action="#">
                 <div className="form-input-container">
