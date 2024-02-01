@@ -33,11 +33,11 @@ export default function Meme(){
         }))
     }
 
-    function handleDownload() {
+    async function handleDownload() {
         const downloadMeme = document.getElementById("memeImgSection");
     
-         htmlToImage.toJpeg(downloadMeme).then(dataUrl =>{
-            download(dataUrl, "meme_image.jpeg")
+        await htmlToImage.toPng(downloadMeme).then(dataUrl =>{
+            download(dataUrl, "meme_image.png")
         }).catch(() => console.log("error in downloading"))   
     }
     return(
