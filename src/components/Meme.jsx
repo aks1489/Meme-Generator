@@ -47,11 +47,11 @@ export default function Meme(){
             <div className="form" action="#">
                 <div className="form-input-container">
                     <div className="input-box">
-                        <label htmlFor="top-text" className="form-lable">Top Text</label>
+                        <label htmlFor="topText" className="form-lable">Top Text</label>
                         <input className="form-input" id="topText" name="topText" type="text" placeholder="Shut up" value={meme.topText} onChange={handleChange}/>
                     </div>
                     <div className="input-box">
-                        <label htmlFor="bottom-text" className="form-lable">Bottom Text</label>
+                        <label htmlFor="bottomText" className="form-lable">Bottom Text</label>
                         <input className="form-input"  id="bottomText" name="bottomText" type="text" placeholder="And take my money" value={meme.bottomText} onChange={handleChange}/>
                     </div>
                 </div>
