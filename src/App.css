@@ -150,6 +150,12 @@
         2px 2px 5px #000;
 }
 
+@media (max-width: 575px){
+    .imgText{
+        font-size: 0.80rem;
+    }
+}
+
 .top{
     top: 0;
 }
