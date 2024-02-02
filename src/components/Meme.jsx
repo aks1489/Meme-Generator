@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as htmlToImage from "html-to-image"
 import download from "downloadjs";
 
@@ -11,11 +11,20 @@ export default function Meme(){
     
     const [memeUrl, setMemeUrl] = useState([])
 
-    useState(() => {
-        fetch("https://api.imgflip.com/get_memes")
-            .then(res => res.json())
-            .then(data => setMemeUrl(data.data.memes))
-    }, [])
+    // useEffect(() => {
+    //     fetch("https://api.imgflip.com/get_memes")
+    //         .then(res => res.json())
+    //         .then(data => setMemeUrl(data.data.memes))
+    // }, [])
+
+    useEffect(() =>{
+        async function getMemes(){
+            const res = await fetch("https://api.imgflip.com/get_memes")
+            const data = await res.json()
+            setMemeUrl(data.data.memes)
+        }
+        getMemes()
+    },[])
 
     function getMemeUrl(){
             const randomNumber = Math.floor(Math.random() * memeUrl.length)
