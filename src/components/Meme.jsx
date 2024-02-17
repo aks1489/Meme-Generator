@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as htmlToImage from "html-to-image"
 import download from "downloadjs";
+import LoadingBar from "react-top-loading-bar";
 
 export default function Meme(){
     const [meme,setMeme] = useState({
@@ -10,6 +11,7 @@ export default function Meme(){
     })
     
     const [memeUrl, setMemeUrl] = useState([])
+    const [progress, setProgress] = useState(0)
 
     // useEffect(() => {
     //     fetch("https://api.imgflip.com/get_memes")
@@ -27,12 +29,13 @@ export default function Meme(){
     },[])
 
     function getMemeUrl(){
-            const randomNumber = Math.floor(Math.random() * memeUrl.length)
-            const url = memeUrl[randomNumber].url;
-            setMeme(prvdata => ({
-                ...prvdata,
-                randomImg: url
-            }))
+        const randomNumber = Math.floor(Math.random() * memeUrl.length)
+        const url = memeUrl[randomNumber].url;
+        setMeme(prvdata => ({
+            ...prvdata,
+            randomImg: url
+        }))
+        setProgress(0)
     }
 
     function handleChange(event){
@@ -51,8 +54,18 @@ export default function Meme(){
         }).catch(() => console.log("error in downloading"))   
     }
 
+    function handleClick() {
+        getMemeUrl()
+        setProgress(100)
+    }
+
     return (
         <div className="main">
+            <LoadingBar 
+                color='Aquamarine'
+                progress={progress}
+                onLoaderFinished={() => setProgress(0)}
+            />
             <div className="form" action="#">
                 <div className="form-input-container">
                     <div className="input-box">
@@ -64,7 +77,7 @@ export default function Meme(){
                         <input className="form-input"  id="bottomText" name="bottomText" type="text" placeholder="And take my money" value={meme.bottomText} onChange={handleChange}/>
                     </div>
                 </div>
-                <button type="submit" onClick={getMemeUrl}  className="form-submit-button">Get a new meme image 🖼️</button>
+                <button type="submit" onClick={handleClick}  className="form-submit-button">Get a new meme image 🖼️</button>
             </div>
             <div className="meme-img-section" id="memeImgSection">
                 <img src={meme.randomImg} alt="" className="meme-img" />
